@@ -1,1 +1,1 @@
-# aws-projects
+# studentInfo
