@@ -4,6 +4,12 @@
   <artifactId>studentInfo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
+
+  <properties>
+  	<sonar.organization>worktobedone</sonar.organization>
+  	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  </properties>
+	
   <dependencies>
   	<dependency>
 	    <groupId>com.amazonaws</groupId>
