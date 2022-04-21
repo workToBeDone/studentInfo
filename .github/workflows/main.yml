@@ -32,5 +32,9 @@ jobs:
 
     - name: Current branch name
       run: |
-        echo "${{ steps.branch-name.outputs.current_branch }}"
+        echo "::set-env name=BRANCH_NAME::${{ steps.branch-name.outputs.current_branch }}"
+        
+    # print branch name
+    - name: Get branch name
+      run: echo 'The branch name is' $BRANCH_NAME        
 
