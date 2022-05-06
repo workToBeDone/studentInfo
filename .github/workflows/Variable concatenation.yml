@@ -28,3 +28,9 @@ jobs:
       - name: check on arg 3
         run: |
           echo "${{env.arg3}}" #will return the string $arg1$arg2 instead of the concatenated value
+      - name: Extract Maven project version
+        run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+        id: project
+
+      - name: Show extracted Maven project version
+        run: echo ${{ steps.project.outputs.version }}
