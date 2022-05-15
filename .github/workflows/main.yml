@@ -30,11 +30,4 @@ jobs:
       id: branch-name
       uses: tj-actions/branch-names@v5.2
 
-    - name: Current branch name
-      run: |
-        echo "::set-env name=BRANCH_NAME::${{ steps.branch-name.outputs.current_branch }}"
-        
-    # print branch name
-    - name: Get branch name
-      run: echo 'The branch name is' $BRANCH_NAME        
-
+  
