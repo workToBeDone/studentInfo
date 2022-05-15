@@ -11,6 +11,13 @@ on:
         default: 'warning'
       tags:
         description: 'Test scenario tags' 
+      choice:
+        type: choice
+        description: Make a choice
+        options:
+        - foo
+        - bar
+        - baz
   
 jobs:
   printInputs:
