@@ -13,15 +13,29 @@ on:
 
 jobs:
   create-github-release:
-    name: Create GitHub Release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Create Release
-        run: gh release create ${{ github.run_number }} --generate-notes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      name: Create GitHub Release
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+        - name: Create Release
+          uses: zwaldowski/match-label-action@v1
+          with:
+              allowed: major,minor,patch
+        - uses: zwaldowski/semver-release-action@v1
+          with:
+            bump: ${{ steps.bump.outputs.match }}
+            github_token: ${{ secrets.GITHUB_TOKEN }}          
+
+#     name: Create GitHub Release
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
+#       - name: Create Release
+#         run: gh release create ${{ github.run_number }} --generate-notes
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
   build:
     runs-on: ubuntu-latest
